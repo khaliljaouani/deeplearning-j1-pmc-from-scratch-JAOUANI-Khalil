@@ -55,6 +55,11 @@ for epoch in range(n_epochs):
     if epoch % 10 == 0:
         print(f"Epoch {epoch:3d} | Loss: {loss:.4f} | w: {w.round(3)} | b: {b:.3f}")
 
+# Note : avec le gradient moyenné (1/n) et lr=0.1, la loss atteint ~0.59 en
+# 50 epochs et continue de descendre si on prolonge. Sans le /n (gradient
+# sommé), chaque pas est 4x plus grand et on atteint ~0.4 : même direction,
+# taille de pas différente — c'est équivalent à lr=0.4.
+
 plt.figure(figsize=(8, 4))
 plt.plot(losses)
 plt.xlabel("Epoch"); plt.ylabel("Loss BCE")
